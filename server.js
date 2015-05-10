@@ -2,6 +2,7 @@
 //  OpenShift sample Node application
 var express = require('express');
 var fs      = require('fs');
+var path    = require("path");
 
 
 /**
@@ -119,6 +120,8 @@ var SampleApp = function() {
         for (var r in self.routes) {
             self.app.get(r, self.routes[r]);
         }
+        self.app.use(express.static(path.join(__dirname, "/bower_components")));
+        self.app.use(express.static(path.join(__dirname, "/node_modules")));
     };
 
 
